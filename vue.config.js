@@ -36,6 +36,8 @@ module.exports = {
       warnings: false,
       errors: true
     },
+    public: require('os').networkInterfaces()[Object.keys(require('os').networkInterfaces())[0]][1].address + ':' + port,
+    disableHostCheck: true,
     before: require('./mock/mock-server.js')
   },
   configureWebpack: {
@@ -87,7 +89,7 @@ module.exports = {
             .plugin('ScriptExtHtmlWebpackPlugin')
             .after('html')
             .use('script-ext-html-webpack-plugin', [{
-            // `runtime` must same as runtimeChunk name. default is `runtime`
+              // `runtime` must same as runtimeChunk name. default is `runtime`
               inline: /runtime\..*\.js$/
             }])
             .end()
