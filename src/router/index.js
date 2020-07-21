@@ -43,6 +43,12 @@ export const constantRoutes = [
   },
 
   {
+    path: '/demo',
+    component: () => import('@/views/visual/demo'),
+    hidden: true
+  },
+
+  {
     path: '/visual_template_one',
     component: () => import('@/views/visual/index'),
     hidden: true
