@@ -43,6 +43,24 @@ export const constantRoutes = [
   },
 
   {
+    path: '/visual_template_one',
+    component: () => import('@/views/visual/index'),
+    hidden: true
+  },
+
+  {
+    path: '/visual_template_two',
+    component: () => import('@/views/visual/index_two'),
+    hidden: true
+  },
+
+  {
+    path: '/visual_template_three',
+    component: () => import('@/views/visual/index_three'),
+    hidden: true
+  },
+
+  {
     path: '/',
     component: Layout,
     redirect: '/dashboard',
