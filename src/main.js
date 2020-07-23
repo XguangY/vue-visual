@@ -18,6 +18,8 @@ import '@/permission' // permission control
 import './assets/common.less'
 import dataV from '@jiaminghi/data-view'
 
+import echarts from 'echarts'
+
 /**
  * If you don't want to use mock-server
  * you want to use MockJs for mock api
@@ -37,6 +39,8 @@ Vue.use(ElementUI, { locale })
 // Vue.use(ElementUI)
 
 Vue.use(dataV)
+
+Vue.prototype.$echarts = echarts
 Vue.config.productionTip = false
 
 new Vue({
