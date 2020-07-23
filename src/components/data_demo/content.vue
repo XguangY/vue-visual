@@ -14,66 +14,39 @@
         <dv-decoration-7 class="chart-container-left-title">个人资讯</dv-decoration-7>
         <dv-scroll-board class="chart-container-left-table" :config="config" />
       </dv-border-box-11>
-      <dv-border-box-11 class="chart-container" title="今日仓位">2</dv-border-box-11>
+      <dv-border-box-11 class="chart-container" title="今日仓位">
+        <div class="chart-container-center">
+          <dv-border-box-13 style="width:200px; height:60px;">美元指数</dv-border-box-13>
+          <dv-decoration-1 style="width:200px; height:60px;" />
+        </div>
+      </dv-border-box-11>
       <dv-border-box-11 class="chart-container" title="今日操盘策略">
-        <div class="chart-container-right">
-          <dv-decoration-9 class="chart-container-right-strategy">策略一</dv-decoration-9>
-          <div class="chart-container-right-con">
-            <div class="chart-container-right-con-item">
-              <div>当前持仓</div>
-              <div>
-                <div>概念板块：贵州茅台[600519]、山西汾酒[600809]、 五粮液[000858]</div>
-                <div>军工板块：航天晨光[600501]、东安动力[600178]、航发科技[600391]...</div>
-                <div>军工板块：航天晨光[600501]、东安动力[600178]、航发科技[600391]...</div>
+        <div v-for="(item, index) in strategy_data" :key="index">
+          <div class="chart-container-right">
+            <dv-decoration-9 class="chart-container-right-strategy">{{ item.title }}</dv-decoration-9>
+            <div class="chart-container-right-con">
+              <div class="chart-container-right-con-item">
+                <div>当前持仓</div>
+                <div>
+                  <div v-for="(ite, ind) in item.data_now" :key="ind">
+                    <span v-text="`${ite.type_name}:`" />
+                    <span v-for="(ele, num) in ite.data" :key="num" v-text="`${ele.name}、`" />
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="chart-container-right-con-item">
-              <div>今日新增</div>
-              <div>
-                <div>基建板块：中国交建[601800]、中国建筑[601668]、中国铁建[601186]</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <dv-decoration-2 class="chart-container-line" />
-        <div class="chart-container-right">
-          <dv-decoration-9 class="chart-container-right-strategy">策略二</dv-decoration-9>
-          <div class="chart-container-right-con">
-            <div class="chart-container-right-con-item">
-              <div>当前持仓</div>
-              <div>
-                <div>概念板块：贵州茅台[600519]、山西汾酒[600809]、 五粮液[000858]</div>
-                <div>军工板块：航天晨光[600501]、东安动力[600178]、航发科技[600391]...</div>
-              </div>
-            </div>
-            <div class="chart-container-right-con-item">
-              <div>今日新增</div>
-              <div>
-                <div>基建板块：中国交建[601800]、中国建筑[601668]、中国铁建[601186]</div>
+              <div class="chart-container-right-con-item">
+                <div>今日新增</div>
+                <div>
+                  <div v-for="(ite, ind) in item.data_add" :key="ind">
+                    <span v-text="`${ite.type_name}:`" />
+                    <span v-for="(ele, num) in ite.data" :key="num" v-text="`${ele.name}、`" />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
+          <dv-decoration-2 class="chart-container-line" />
         </div>
-        <dv-decoration-2 class="chart-container-line" />
-        <div class="chart-container-right">
-          <dv-decoration-9 class="chart-container-right-strategy">策略三</dv-decoration-9>
-          <div class="chart-container-right-con">
-            <div class="chart-container-right-con-item">
-              <div>当前持仓</div>
-              <div>
-                <div>概念板块：贵州茅台[600519]、山西汾酒[600809]、 五粮液[000858]</div>
-                <div>军工板块：航天晨光[600501]、东安动力[600178]、航发科技[600391]...</div>
-              </div>
-            </div>
-            <div class="chart-container-right-con-item">
-              <div>今日新增</div>
-              <div>
-                <div>基建板块：中国交建[601800]、中国建筑[601668]、中国铁建[601186]</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <dv-decoration-2 class="chart-container-line" />
 
         <div class="chart-container-right">
           <dv-border-box-8 class="chart-container-right-img">
@@ -137,7 +110,113 @@ export default {
         headerHeight: 45,
         oddRowBGC: 'rgba(0, 44, 81, 0.8)',
         evenRowBGC: 'rgba(10, 29, 50, 0.8)'
-      }
+      },
+      strategy_data: [
+        {
+          type: 0,
+          title: '策略一',
+          data_now: [
+            {
+              type_name: '概念板块',
+              data: [
+                { name: '贵州茅台[600519]' },
+                { name: '山西汾酒[600809]' },
+                { name: '五粮液[000858]' }
+              ]
+            },
+            {
+              type_name: '军工板块',
+              data: [
+                { name: '航天晨光[600501]' },
+                { name: '东安动力[600178]' },
+                { name: '航发科技[600391]' }
+              ]
+            }
+          ],
+          data_add: [
+            {
+              type_name: '基建板块',
+              data: [
+                { name: '中国交建[601800]' },
+                { name: '中国建筑[601668]' },
+                { name: '中国铁建[601186]' }
+              ]
+            }
+          ]
+        },
+        {
+          type: 1,
+          title: '策略二',
+          data_now: [
+            {
+              type_name: '概念板块',
+              data: [
+                { name: '贵州茅台[600519]' },
+                { name: '山西汾酒[600809]' },
+                { name: '五粮液[000858]' }
+              ]
+            },
+            {
+              type_name: '军工板块',
+              data: [
+                { name: '航天晨光[600501]' },
+                { name: '东安动力[600178]' },
+                { name: '航发科技[600391]' }
+              ]
+            },
+            {
+              type_name: '军工板块',
+              data: [
+                { name: '航天晨光[600501]' },
+                { name: '东安动力[600178]' },
+                { name: '航发科技[600391]' }
+              ]
+            }
+          ],
+          data_add: [
+            {
+              type_name: '基建板块',
+              data: [
+                { name: '中国交建[601800]' },
+                { name: '中国建筑[601668]' },
+                { name: '中国铁建[601186]' }
+              ]
+            }
+          ]
+        },
+        {
+          type: 2,
+          title: '策略三',
+          data_now: [
+            {
+              type_name: '概念板块',
+              data: [
+                { name: '贵州茅台[600519]' },
+                { name: '山西汾酒[600809]' },
+                { name: '五粮液[000858]' }
+              ]
+            },
+            {
+              type_name: '军工板块',
+              data: [
+                { name: '航天晨光[600501]' },
+                { name: '东安动力[600178]' },
+                { name: '航发科技[600391]' }
+              ]
+            }
+          ],
+          data_add: [
+            {
+              type_name: '基建板块',
+              data: [
+                { name: '中国交建[601800]' },
+                { name: '中国建筑[601668]' },
+                { name: '中国铁建[601186]' }
+              ]
+            }
+          ]
+        }
+      ]
     }
   },
   methods: {}
@@ -168,6 +247,10 @@ export default {
         &-table {
           height: 132px;
         }
+      }
+      &-center {
+        display: flex;
+        justify-content:space-between;
       }
       &-right {
         display: flex;
