@@ -5,7 +5,9 @@
         <dv-border-box-13 class="chart-container-center-top-left">美元指数</dv-border-box-13>
         <dv-decoration-1 class="chart-container-center-top-left" />
       </div>
-      <div ref="chart" style="width:100%;height:230px" />
+      <div style="overflow:hidden">
+        <div ref="chart" style="width:100%;height:230px" />
+      </div>
       <dv-decoration-10 class="chart-container-center-line" />
       <div class="chart-container-center-fa">
         <div>
