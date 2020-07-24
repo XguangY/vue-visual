@@ -35,6 +35,7 @@
           <div class="chart-container-center-con">
             <dv-decoration-11 style="width:200px;height:60px;">今日股票池</dv-decoration-11>
           </div>
+          <div ref="pond" class="chart-container-center-pond" />
         </div>
       </dv-border-box-11>
       <dv-border-box-11 class="chart-container" title="今日操盘策略">
@@ -238,6 +239,7 @@ export default {
   },
   mounted() {
     this.getEchartData()
+    this.aa()
   },
   methods: {
     getEchartData() {
@@ -355,6 +357,143 @@ export default {
           dataIndex: chart.currentIndex
         })
       }
+    },
+    aa() {
+      var chartPond = this.$echarts.init(this.$refs.pond)
+
+      var option = {
+        tooltip: {},
+        // backgroundColor: 'rgba(6, 30, 93, 0.1)',
+        series: [
+          {
+            type: 'wordCloud',
+            gridSize: 2,
+            sizeRange: [12, 50],
+            rotationRange: [-90, 90],
+            shape: 'pentagon',
+            width: '100%',
+            height: '100%',
+            drawOutOfBound: true,
+            textStyle: {
+              normal: {
+                color: function() {
+                  return (
+                    'rgb(' +
+                    [
+                      Math.round(Math.random() * 160),
+                      Math.round(Math.random() * 160),
+                      Math.round(Math.random() * 160)
+                    ].join(',') +
+                    ')'
+                  )
+                }
+              },
+              emphasis: {
+                shadowBlur: 10,
+                shadowColor: 'blue'
+              }
+            },
+            data: [
+              {
+                name: '航天晨光',
+                value: 10000,
+                textStyle: {
+                  normal: {
+                    color: 'black'
+                  },
+                  emphasis: {
+                    color: 'red'
+                  }
+                }
+              },
+              {
+                name: '贵州茅台',
+                value: 6181
+              },
+              {
+                name: '华北制药',
+                value: 4386
+              },
+              {
+                name: '山西汾酒',
+                value: 4055
+              },
+              {
+                name: '中国铁建',
+                value: 2467
+              },
+              {
+                name: '航发科技',
+                value: 2244
+              },
+              {
+                name: '中环环保',
+                value: 1898
+              },
+              {
+                name: '航天晨光',
+                value: 1484
+              },
+              {
+                name: '中国铁建',
+                value: 1112
+              },
+              {
+                name: '华北制药',
+                value: 965
+              },
+              {
+                name: '贵州茅台',
+                value: 847
+              },
+              {
+                name: '洪都航空',
+                value: 582
+              },
+              {
+                name: '山西汾酒',
+                value: 555
+              },
+              {
+                name: '贵州茅台',
+                value: 550
+              },
+              {
+                name: '洪都航空',
+                value: 462
+              },
+              {
+                name: '酷特智能',
+                value: 366
+              },
+              {
+                name: '山西汾酒',
+                value: 360
+              },
+              {
+                name: '中环环保',
+                value: 282
+              },
+              {
+                name: '航发科技',
+                value: 273
+              },
+              {
+                name: '酷特智能',
+                value: 265
+              }
+            ]
+          }
+        ]
+      }
+      // 添加点击事件,获取自定义属性
+      chartPond.on('click', function(params) {
+        var name = params.data.name
+        var value = params.data.value
+        var uniscid = params.data.uniscid
+        console.log(name + ':' + value + ':' + uniscid)
+      })
+      chartPond.setOption(option)
     }
   }
 }
@@ -413,7 +552,11 @@ export default {
         }
         &-line {
           margin: 10px 0;
-          height:5px;
+          height: 5px;
+        }
+        &-pond {
+          // width: 100%;
+          height: 150px;
         }
       }
       &-right {

@@ -19,7 +19,7 @@ import './assets/common.less'
 import dataV from '@jiaminghi/data-view'
 
 import echarts from 'echarts'
-
+require('echarts-wordcloud')
 /**
  * If you don't want to use mock-server
  * you want to use MockJs for mock api
