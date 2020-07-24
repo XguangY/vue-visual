@@ -22,20 +22,30 @@
           </div>
           <div ref="chart" style="width:100%;height:230px" />
           <dv-decoration-10 class="chart-container-center-line" />
-          <div class="chart-container-center-con">
-            <dv-decoration-11 style="width:200px;height:60px;">今日关注板块</dv-decoration-11>
+          <div class="chart-container-center-fa">
+            <div>
+              <div class="chart-container-center-fa-con">
+                <dv-decoration-11 style="width:200px;height:60px;">今日关注板块</dv-decoration-11>
+              </div>
+              <div class="chart-container-center-fa-block">
+                <dv-border-box-12 class="chart-container-center-fa-block-item">基建板块</dv-border-box-12>
+                <dv-border-box-12 class="chart-container-center-fa-block-item">军工板块</dv-border-box-12>
+                <dv-border-box-12 class="chart-container-center-fa-block-item">石油化工板块</dv-border-box-12>
+                <dv-border-box-12 class="chart-container-center-fa-block-item">概念板块</dv-border-box-12>
+                <dv-border-box-12 class="chart-container-center-fa-block-item">能源板块</dv-border-box-12>
+                <dv-border-box-12 class="chart-container-center-fa-block-item">航空板块</dv-border-box-12>
+                <dv-border-box-12 class="chart-container-center-fa-block-item">更多板块...</dv-border-box-12>
+              </div>
+            </div>
+            <dv-decoration-4 style="width:5px;height:370px;padding-top:6px" />
+            <div>
+              <div class="chart-container-center-fa-con">
+                <dv-decoration-11 style="width:200px;height:60px;">今日股票池</dv-decoration-11>
+              </div>
+              <div ref="pond" class="chart-container-center-fa-pond" />
+            </div>
           </div>
-          <div class="chart-container-center-block">
-            <dv-border-box-12 class="chart-container-center-block-item">基建板块</dv-border-box-12>
-            <dv-border-box-12 class="chart-container-center-block-item">军工板块</dv-border-box-12>
-            <dv-border-box-12 class="chart-container-center-block-item">石油化工板块</dv-border-box-12>
-            <dv-border-box-12 class="chart-container-center-block-item">概念板块</dv-border-box-12>
-          </div>
-          <dv-decoration-10 class="chart-container-center-line" />
-          <div class="chart-container-center-con">
-            <dv-decoration-11 style="width:200px;height:60px;">今日股票池</dv-decoration-11>
-          </div>
-          <div ref="pond" class="chart-container-center-pond" />
+          <!-- <dv-decoration-10 class="chart-container-center-line" /> -->
         </div>
       </dv-border-box-11>
       <dv-border-box-11 class="chart-container" title="今日操盘策略">
@@ -399,7 +409,7 @@ export default {
                 value: 10000,
                 textStyle: {
                   normal: {
-                    color: 'black'
+                    color: 'pink'
                   },
                   emphasis: {
                     color: 'red'
@@ -528,35 +538,44 @@ export default {
         &-top {
           display: flex;
           justify-content: space-between;
-          line-height: 56px;
+          line-height: 60px;
           text-align: center;
           &-left {
             width: 120px;
             height: 56px;
           }
         }
-        &-con {
+        &-fa {
           display: flex;
-          justify-content: center;
-          margin-bottom: 10px;
-        }
-        &-block {
-          display: flex;
-          &-item {
-            // width: 100px;
-            text-align: center;
-            margin: 0 10px;
-            line-height: 60px;
-            height: 60px;
+          > div {
+            width: 50%;
+          }
+          &-con {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+          }
+          &-block {
+            display: flex;
+            flex-wrap: wrap;
+            &-item {
+              width: 50%;
+              text-align: center;
+              margin: 8px 0;
+              line-height: 60px;
+              height: 60px;
+            }
+            &-item:last-child {
+              width: 100%;
+            }
+          }
+          &-pond {
+            height: 300px;
           }
         }
         &-line {
           margin: 10px 0;
           height: 5px;
-        }
-        &-pond {
-          // width: 100%;
-          height: 150px;
         }
       }
       &-right {
