@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@jiaminghi/data-view": "^2.4.4",
-    "axios": "0.18.1",
+    "axios": "1.6.0",
     "core-js": "3.6.5",
     "echarts": "^4.8.0",
     "echarts-wordcloud": "^1.1.3",
